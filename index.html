@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How Nobita Are You?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Nunito:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+
+  <div class="header">
+    <div class="eyebrow"><span class="dot"></span> Nobita-o-Meter</div>
+    <h1>How <span>Nobita</span> Are You?</h1>
+    <p class="sub">13 questions. No gadgets allowed. Answer honestly, we'll know if you didn't.</p>
+  </div>
+
+  <div class="card">
+
+    <!-- INTRO -->
+    <div class="screen active" id="screen-intro">
+      <ul class="intro-rules">
+        <li><span class="icon">1</span> <span><b>13 questions</b> about grades, naps, Shizuka, Gian, and general life competence.</span></li>
+        <li><span class="icon">2</span> <span>Answer like your <b>friends are watching</b>, not like you want to look good.</span></li>
+        <li><span class="icon">3</span> <span>At the end you get a <b>% Nobita score</b> and a verdict you did not ask for.</span></li>
+      </ul>
+      <button class="start-btn" onclick="startQuiz()">Start the quiz</button>
+    </div>
+
+    <!-- QUIZ -->
+    <div class="screen" id="screen-quiz">
+      <div class="pocket-wrap">
+        <div class="pocket-label">
+          <span id="q-counter">Question 1 / 13</span>
+          <span id="q-percent-label">0%</span>
+        </div>
+        <div class="pocket-track"><div class="pocket-fill" id="pocket-fill" style="width:0%"></div></div>
+      </div>
+      <div class="qtext" id="q-text"></div>
+      <div class="options" id="q-options"></div>
+      <div class="nav-row">
+        <button class="back-btn" id="back-btn" onclick="goBack()">← back</button>
+        <span></span>
+      </div>
+    </div>
+
+    <!-- RESULT -->
+    <div class="screen" id="screen-result">
+      <div class="gauge-wrap">
+        <svg width="240" height="150" viewBox="0 0 240 150" id="gauge-svg">
+          <!-- track arc -->
+          <path d="M 20 130 A 100 100 0 0 1 220 130" fill="none" stroke="#EFEAE0" stroke-width="18" stroke-linecap="round"/>
+          <!-- colored fill arc, stroke-dasharray animated via JS -->
+          <path id="gauge-arc" d="M 20 130 A 100 100 0 0 1 220 130" fill="none" stroke="var(--dora-blue)" stroke-width="18" stroke-linecap="round"/>
+          <!-- needle -->
+          <line id="gauge-needle" x1="120" y1="130" x2="120" y2="45" stroke="var(--nose-red)" stroke-width="5" stroke-linecap="round"/>
+          <circle cx="120" cy="130" r="9" fill="var(--ink)"/>
+          <circle cx="120" cy="130" r="4" fill="var(--bell-yellow)"/>
+          <text x="120" y="118" text-anchor="middle" class="gauge-pct" id="gauge-pct-text" font-size="26" font-weight="700">0%</text>
+        </svg>
+      </div>
+      <div class="verdict-title" id="verdict-title"></div>
+      <div class="verdict-body" id="verdict-body"></div>
+      <button class="restart-btn" onclick="restartQuiz()">Make a friend take this too</button>
+      <div class="share-note">Screenshot your gauge before you regret this.</div>
+    </div>
+  </div>
+</div>
+<script src="script.js"></script>
+
+</body>
+</html>

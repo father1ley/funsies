@@ -1,0 +1,271 @@
+:root{
+    --cream:#FFF8EA;
+    --ink:#20222B;
+    --dora-blue:#1E88C7;
+    --dora-blue-dark:#0F5E90;
+    --bell-yellow:#FFCE3A;
+    --nose-red:#E8433C;
+    --pocket-white:#FFFFFF;
+    --line: rgba(32,34,43,0.12);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Nunito', sans-serif;
+    min-height:100vh;
+    display:flex;
+    align-items:flex-start;
+    justify-content:center;
+    padding:32px 16px 64px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .app{
+    width:100%;
+    max-width:640px;
+  }
+
+  /* ---- header ---- */
+  .header{
+    text-align:center;
+    margin-bottom:28px;
+  }
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:var(--dora-blue);
+    color:white;
+    font-family:'Space Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    padding:6px 14px;
+    border-radius:999px;
+    margin-bottom:16px;
+  }
+  .eyebrow .dot{
+    width:6px;height:6px;border-radius:50%;
+    background:var(--bell-yellow);
+  }
+  h1{
+    font-family:'Baloo 2', sans-serif;
+    font-weight:800;
+    font-size:clamp(32px,7vw,48px);
+    line-height:1.05;
+    margin:0 0 10px;
+    color:var(--dora-blue-dark);
+  }
+  h1 span{color:var(--nose-red);}
+  .sub{
+    font-size:16px;
+    color:rgba(32,34,43,0.65);
+    max-width:440px;
+    margin:0 auto;
+    font-weight:600;
+  }
+
+  /* ---- card ---- */
+  .card{
+    background:var(--pocket-white);
+    border-radius:28px;
+    border:3px solid var(--ink);
+    box-shadow:0 6px 0 var(--ink);
+    padding:28px 26px 26px;
+    position:relative;
+    overflow:hidden;
+  }
+  .card::before{
+    content:"";
+    position:absolute;
+    top:-40px; left:50%;
+    transform:translateX(-50%);
+    width:120px;height:80px;
+    background:var(--dora-blue);
+    border-radius:50%;
+    opacity:0.08;
+  }
+
+  /* ---- pocket progress ---- */
+  .pocket-wrap{
+    margin-bottom:22px;
+  }
+  .pocket-label{
+    display:flex;
+    justify-content:space-between;
+    font-family:'Space Mono', monospace;
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    color:rgba(32,34,43,0.55);
+    margin-bottom:8px;
+  }
+  .pocket-track{
+    height:16px;
+    border-radius:999px;
+    background:#EFEAE0;
+    border:2px solid var(--ink);
+    overflow:hidden;
+  }
+  .pocket-fill{
+    height:100%;
+    background:linear-gradient(90deg, var(--dora-blue), #58B8E8);
+    border-radius:999px;
+    transition:width 0.4s ease;
+  }
+
+  /* ---- question ---- */
+  .qtext{
+    font-family:'Baloo 2', sans-serif;
+    font-weight:700;
+    font-size:22px;
+    line-height:1.3;
+    margin:4px 0 20px;
+    min-height:56px;
+  }
+  .options{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .opt{
+    text-align:left;
+    font-family:'Nunito', sans-serif;
+    font-weight:700;
+    font-size:15.5px;
+    color:var(--ink);
+    background:var(--cream);
+    border:2.5px solid var(--ink);
+    border-radius:16px;
+    padding:14px 16px;
+    cursor:pointer;
+    transition:transform 0.12s ease, background 0.12s ease, box-shadow 0.12s ease;
+    box-shadow:0 3px 0 var(--ink);
+  }
+  .opt:hover{
+    background:#FFF0C4;
+    transform:translateY(-2px);
+  }
+  .opt:active, .opt.chosen{
+    transform:translateY(2px);
+    box-shadow:0 1px 0 var(--ink);
+    background:var(--bell-yellow);
+  }
+  .opt:disabled{
+    cursor:default;
+  }
+
+  .nav-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-top:22px;
+  }
+  .back-btn{
+    background:none;
+    border:none;
+    font-family:'Space Mono', monospace;
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    color:rgba(32,34,43,0.45);
+    cursor:pointer;
+    padding:6px 0;
+  }
+  .back-btn:hover{color:var(--ink);}
+  .back-btn:disabled{visibility:hidden;}
+
+  /* ---- intro / result screens ---- */
+  .screen{display:none;}
+  .screen.active{display:block;}
+
+  .start-btn, .restart-btn{
+    display:block;
+    width:100%;
+    font-family:'Baloo 2', sans-serif;
+    font-weight:700;
+    font-size:19px;
+    color:white;
+    background:var(--nose-red);
+    border:3px solid var(--ink);
+    border-radius:16px;
+    padding:16px;
+    cursor:pointer;
+    box-shadow:0 5px 0 var(--ink);
+    transition:transform 0.12s ease, box-shadow 0.12s ease;
+    margin-top:6px;
+  }
+  .start-btn:hover, .restart-btn:hover{transform:translateY(-2px);}
+  .start-btn:active, .restart-btn:active{transform:translateY(3px); box-shadow:0 2px 0 var(--ink);}
+
+  .intro-rules{
+    list-style:none;
+    padding:0;
+    margin:0 0 22px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .intro-rules li{
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
+    font-weight:600;
+    font-size:14.5px;
+    color:rgba(32,34,43,0.75);
+  }
+  .intro-rules li b{color:var(--ink);}
+  .intro-rules .icon{
+    flex:none;
+    width:26px;height:26px;
+    border-radius:50%;
+    background:var(--dora-blue);
+    color:white;
+    display:flex;align-items:center;justify-content:center;
+    font-size:13px;
+    font-family:'Space Mono',monospace;
+  }
+
+  /* ---- gauge (signature element) ---- */
+  .gauge-wrap{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    margin:6px 0 18px;
+  }
+  .gauge-pct{
+    font-family:'Space Mono', monospace;
+    font-weight:700;
+    font-size:15px;
+    fill:var(--ink);
+  }
+  .verdict-title{
+    font-family:'Baloo 2', sans-serif;
+    font-weight:800;
+    font-size:26px;
+    text-align:center;
+    color:var(--nose-red);
+    margin:10px 0 8px;
+    line-height:1.15;
+  }
+  .verdict-body{
+    text-align:center;
+    font-size:15.5px;
+    font-weight:600;
+    color:rgba(32,34,43,0.8);
+    max-width:440px;
+    margin:0 auto 22px;
+    line-height:1.5;
+  }
+  .share-note{
+    text-align:center;
+    font-family:'Space Mono', monospace;
+    font-size:11.5px;
+    color:rgba(32,34,43,0.45);
+    margin-top:14px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .pocket-fill, .opt, .start-btn, .restart-btn{transition:none;}
+  }
